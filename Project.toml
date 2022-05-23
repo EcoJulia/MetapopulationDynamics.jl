@@ -1,0 +1,8 @@
+name = "MetapopulationDynamics"
+uuid = "67afee28-ec33-4cc2-88ea-a48c87ed52f9"
+authors = ["michael catchen <michael.catchen@colorado.edu>"]
+version = "0.0.1"
+
+[deps]
+DynamicGrids = "a5dba43e-3abc-5203-bfc5-584ca68d3f5b"
+SpatialGraphs = "c8109be6-b162-4503-8829-8b6b29b93f50"
