@@ -1,0 +1,1 @@
+struct SpatialGraph <: AbstractSpace end 

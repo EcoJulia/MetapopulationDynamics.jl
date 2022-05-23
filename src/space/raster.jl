@@ -1,0 +1,1 @@
+struct Raster <: AbstractSpace end 

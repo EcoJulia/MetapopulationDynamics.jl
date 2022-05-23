@@ -6,3 +6,4 @@ version = "0.0.1"
 [deps]
 DynamicGrids = "a5dba43e-3abc-5203-bfc5-584ca68d3f5b"
 SpatialGraphs = "c8109be6-b162-4503-8829-8b6b29b93f50"
+Term = "22787eb5-b846-44ae-b979-8e399b8463ab"
