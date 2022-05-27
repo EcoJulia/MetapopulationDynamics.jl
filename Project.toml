@@ -4,6 +4,7 @@ authors = ["michael catchen <michael.catchen@colorado.edu>"]
 version = "0.0.1"
 
 [deps]
+Distances = "b4f34e82-e78d-54a5-968a-f98e89d6e8f7"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 DynamicGrids = "a5dba43e-3abc-5203-bfc5-584ca68d3f5b"
 SpatialGraphs = "c8109be6-b162-4503-8829-8b6b29b93f50"
