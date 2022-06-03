@@ -2,13 +2,13 @@ using MetapopulationDynamics
 using Plots
 
 sg = SpatialGraph()
-djdm = DeterministicJumpDispersalModel(
+sjdm = StochasticJumpDispersalModel(
     0.8,
     DispersalPotential(ExponentialDispersalKernel(decay = 0.5, threshold = 10^-4), sg),
 )
 rm = RickerModel()
 
-fullmodel = modelset(djdm, rm)
+fullmodel = modelset(sjdm, rm)
 
 results = simulate(fullmodel, sg)
 
