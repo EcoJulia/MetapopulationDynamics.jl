@@ -1,6 +1,6 @@
-struct Raster <: AbstractSpace 
-    
-end 
+struct Raster <: AbstractSpace
+    matrix::Matrix
+end
 
 
-numsites() = nothing
+numsites(r::Raster) = prod(size(r.matrix)...)

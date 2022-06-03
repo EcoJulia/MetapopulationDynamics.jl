@@ -11,7 +11,6 @@
 
 """
 
-struct Patches <: AbstractSpace end 
+struct Patches <: AbstractSpace end
 
 numsites() = nothing
-

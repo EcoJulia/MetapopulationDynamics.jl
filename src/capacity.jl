@@ -8,6 +8,6 @@
         where e^(-d_{ij} * alpha) is dispersal kernel.
 """
 
-function capacity(sg::SpatialGraph, kern::DispersalKernel) 
-    
-end 
+function capacity(sg::SpatialGraph, kern::DispersalKernel)
+
+end
