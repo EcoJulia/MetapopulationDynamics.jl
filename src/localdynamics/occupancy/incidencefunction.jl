@@ -7,6 +7,39 @@
     kernel = ExponentialDispersalKernel(; decay = α, threshold = 0.01)
 end
 
+Base.string(ifm::Hanski1994) = """
+[bold]$(typeof(ifm)) <: $(supertype(typeof(ifm)))[/bold]
+[bold]  $(supertype(supertype(typeof(ifm)))) <: $(supertype(supertype(supertype(typeof(ifm)))))[/bold]
+
+An [bold]incidence function[/bold] model with parameters:
+
+[bold]c: [/bold][yellow]$(ifm.c)[/yellow]
+[bold]e: [/bold][yellow]$(ifm.e)[/yellow]
+[bold]α: [/bold][yellow]$(ifm.α)[/yellow]
+[bold]x (area-extinction dependence):[/bold] [yellow]$(ifm.x)[/yellow]
+[bold]A (areas vector):[/bold] Vector of [red]::$(typeof(ifm.A[begin]))[/red] of length [yellow]$(length(ifm.A))[/yellow]
+
+[bold]Kernel:[/bold]
+"""
+Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) =
+    print(io, string(
+        Panel(string(ifm), 
+             Panel(string(ifm.kernel); 
+             title=string(typeof(ifm.kernel)),
+             style="yellow dim",
+             title_style="default yellow bold",     
+             width=24);
+        title=string(typeof(ifm)),
+        style="blue dim",
+        title_style="default bright_blue bold",
+        padding=(2, 2, 1, 1,),
+        width=60,
+        ),
+    )
+)
+
+
+
 params(model::M) where {M<:Hanski1994} =
     model.c, model.e, model.α, model.x, model.A, model.kernel
 

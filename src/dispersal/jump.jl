@@ -14,16 +14,18 @@ function _sim!(
     newstate::Vector{T},
 ) where {T<:Number}
 
-    delta = similar(newstate)
+    delta = zeros(size(newstate))
     p, ϕ = params(model)
     for (i, istate) in enumerate(prevstate)
-        num_leaving_i = rand(Binomial(istate, p))
-        possibletargs = filter!(x->x!=i, [i for i in 1:numsites(sg)])
-        realizedtargs = num_leaving_i < length(possibletargs) ? sample(possibletargs, num_leaving_i, replace=false) : possibletargs
-        for j in realizedtargs
-            delta[j] += 1
+        if istate > 0 && sum(ϕ.matrix[i, :]) > 0
+            num_leaving_i = min(rand(Binomial(floor(istate), p)), Int32(floor(istate)))
+            realizedtargs = rand(Categorical(ϕ.matrix[i, :]), num_leaving_i)
+            #@info num_leaving_i, realizedtargs
+            for j in realizedtargs
+                delta[j] += 1
+            end
+            delta[i] -= num_leaving_i
         end
-        delta[i] -= num_leaving_i
     end
     newstate = prevstate .+ delta
     newstate
@@ -45,18 +47,16 @@ function _sim!(
     prevstate::Vector{T},
     newstate::Vector{T},
 ) where {T<:Number}
-
-    delta = similar(newstate)
+    np = length(newstate)
     p, ϕ = params(model)
+
+    diffusionmatrix = zeros(np,np)
     for (i, istate) in enumerate(prevstate)
         for (j, jstate) in enumerate(prevstate)
-            if i != j
-                itoj = p * istate * ϕ[i, j]
-                delta[j] += itoj
-                delta[i] -= itoj
-            end
+            diffusionmatrix[i,j] = i == j ? 1-p : ϕ[i,j] * p
         end
     end
-    newstate = prevstate .+ delta
+    newstate = diffusionmatrix*prevstate
+    @info newstate
     newstate
 end

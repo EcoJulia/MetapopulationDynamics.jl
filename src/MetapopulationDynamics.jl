@@ -2,6 +2,9 @@ module MetapopulationDynamics
 using Base: @kwdef
 using Distances
 using Distributions
+using StatsBase: crosscor
+using Term
+using CodeTracking: @code_string
 
 abstract type AbstractSpace end
 include(joinpath("space", "patches.jl"))
@@ -33,8 +36,15 @@ export Hanski1994, Levins1967
 include(joinpath("localdynamics", "abundance", "ricker.jl"))
 export RickerModel
 
+include(joinpath("localdynamics", "abundance", "stochasticlogistic.jl"))
+export StochasticLogistic
+
+
 
 include(joinpath("simulate.jl"))
 export simulate, simulate!
+
+include(joinpath("synchrony.jl"))
+export computepcc
 
 end # module

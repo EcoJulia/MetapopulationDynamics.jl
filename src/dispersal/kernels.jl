@@ -5,8 +5,24 @@ abstract type AbstractDispersalKernel end
     decay = 1.0 # a positive real number 
     threshold = 0.01 # cutoff threshold for a value of func to be considered 0
 end
+Base.string(kern::DispersalKernel) = """
+[bold]Kernel: [/bold][green]$(kern.func)[/green]
+[bold]Decay: [/bold][yellow]$(kern.decay)[/yellow]
+[bold]Threshold: [/bold][yellow]$(kern.threshold)[/yellow]
+"""
+Base.show(io::IO, ::MIME"text/plain", kern::DispersalKernel) =
+    print(io, string(
+        Panel(string(kern);
+        title=string(typeof(kern)),
+        style="#a686eb  dim",
+        title_style="default #a686eb bold",
+        width=25, padding=(2, 2, 1, 1)
+        )
+    )
+)
 
-function (dk::DispersalKernel)(x)
+
+ function (dk::DispersalKernel)(x)
     f = dk.func(x, dk.decay)
     f > dk.threshold ? f : 0
 end
@@ -36,7 +52,9 @@ function DispersalPotential(kernel::DispersalKernel, space::T) where {T<:Abstrac
     mat = zeros(Float32, size(kernmat))
 
     for i = 1:ns, j = 1:ns
-        mat[i, j] = kernmat[i, j] / sum(kernmat[i, :])
+        if (sum(kernmat[i, :]) > 0)
+            mat[i, j] = kernmat[i, j] / sum(kernmat[i, :])
+        end
     end
     DispersalPotential(mat)
 end
