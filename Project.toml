@@ -1,6 +1,6 @@
 name = "MetapopulationDynamics"
 uuid = "67afee28-ec33-4cc2-88ea-a48c87ed52f9"
-authors = ["michael catchen <michael.catchen@colorado.edu>"]
+authors = ["michael catchen <michael.catchen@mcgill.ca>"]
 version = "0.0.1"
 
 [deps]
@@ -17,7 +17,7 @@ Term = "22787eb5-b846-44ae-b979-8e399b8463ab"
 UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
 
 [compat]
-julia = ">= 1.6"
+julia = "1.6"
 CodeTracking = ">= 1.0.9"
 Distances = ">= 0.10.7"
 Distributions = ">= 0.25.65"
