@@ -1,4 +1,4 @@
-using Documenter, NeutralLandscapes
+using Documenter, MetapopulationDynamics
 
 # For GR docs bug
 ENV["GKSwstype"] = "100"
