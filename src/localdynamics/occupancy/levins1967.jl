@@ -13,16 +13,18 @@ An [bold]Levin's metapopulation[/bold] model with parameters:
 [bold]c: [/bold][yellow]$(lv.c)[/yellow]
 [bold]e: [/bold][yellow]$(lv.e)[/yellow]
 """
-Base.show(io::IO, ::MIME"text/plain", lv::Levins1967) =
-    print(io, string(
-        Panel(string(lv), 
-        title=string(typeof(lv)),
-        style="blue dim",
-        title_style="default bright_blue bold",
-        padding=(2, 2, 1, 1,),
-        width=60,
+Base.show(io::IO, ::MIME"text/plain", lv::Levins1967) = print(
+    io,
+    string(
+        Panel(
+            string(lv),
+            title = string(typeof(lv)),
+            style = "blue dim",
+            title_style = "default bright_blue bold",
+            padding = (2, 2, 1, 1),
+            width = 60,
         ),
-    )
+    ),
 )
 
 

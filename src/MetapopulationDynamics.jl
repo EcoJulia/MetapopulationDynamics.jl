@@ -2,11 +2,13 @@ module MetapopulationDynamics
 using Base: @kwdef
 using Distances
 using Distributions
-using StatsBase: crosscor
+using StatsBase
 using Term
 using CodeTracking: @code_string
+using UnicodePlots
 
 abstract type AbstractSpace end
+export AbstractSpace
 include(joinpath("space", "patches.jl"))
 include(joinpath("space", "raster.jl"))
 include(joinpath("space", "spatialgraph.jl"))
@@ -44,7 +46,30 @@ export StochasticLogistic
 include(joinpath("simulate.jl"))
 export simulate, simulate!
 
-include(joinpath("synchrony.jl"))
+include(joinpath("outputs.jl"))
+export AbstractOutput, AbundanceOutput, OccupancyOutput
+
+include(joinpath("summarizers", "synchrony.jl"))
 export computepcc
+
+include(joinpath("environment", "layer.jl"))
+export EnvironmentLayer
+include(joinpath("environment", "model.jl"))
+export OccupancyEnvironmentModel, AbundanceEnvironmentModel
+include(joinpath("environment", "layerset.jl"))
+export EnvironmentLayerSet, numlayers
+
+include(joinpath("environment", "timeseries.jl"))
+export EnvironmentTimeseries
+
+
+# Load integrations
+
+using Requires
+function __init__()
+    @info "Loading NeutralLandscapes.jl support..."
+    @require NeutralLandscapes="71847384-8354-4223-ac08-659a5128069f" include(joinpath("integrations", "neutrallandscapes.jl"))
+end
+
 
 end # module

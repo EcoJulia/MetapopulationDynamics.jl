@@ -50,13 +50,12 @@ function _sim!(
     np = length(newstate)
     p, ϕ = params(model)
 
-    diffusionmatrix = zeros(np,np)
+    diffusionmatrix = zeros(np, np)
     for (i, istate) in enumerate(prevstate)
         for (j, jstate) in enumerate(prevstate)
-            diffusionmatrix[i,j] = i == j ? 1-p : ϕ[i,j] * p
+            diffusionmatrix[i, j] = i == j ? 1 - p : ϕ[i, j] * p
         end
     end
-    newstate = diffusionmatrix*prevstate
-    @info newstate
+    newstate = diffusionmatrix * prevstate
     newstate
 end

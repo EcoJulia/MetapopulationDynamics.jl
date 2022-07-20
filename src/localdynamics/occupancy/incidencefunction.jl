@@ -3,7 +3,9 @@
     e::T = 0.05
     α::T = 10.0
     x::T = 1.0
-    A::Vector{T} = rand(Exponential(1.5), 20)
+    numlocations = 20
+    areadistribution=Exponential(1.5)
+    A::Vector{T} = rand(areadistribution, numlocations)
     kernel = ExponentialDispersalKernel(; decay = α, threshold = 0.01)
 end
 
@@ -17,25 +19,30 @@ An [bold]incidence function[/bold] model with parameters:
 [bold]e: [/bold][yellow]$(ifm.e)[/yellow]
 [bold]α: [/bold][yellow]$(ifm.α)[/yellow]
 [bold]x (area-extinction dependence):[/bold] [yellow]$(ifm.x)[/yellow]
-[bold]A (areas vector):[/bold] Vector of [red]::$(typeof(ifm.A[begin]))[/red] of length [yellow]$(length(ifm.A))[/yellow]
+[bold]A (areas vector):[/bold] Vector of [yellow]::$(typeof(ifm.A[begin]))[/yellow] of length [red]$(length(ifm.A))[/red] 
+    with [bold]mean[/bold] [green]$(round(mean(ifm.A),digits=3))[/green] and [bold]variance[/bold] [green]$(round(var(ifm.A), digits=3))[/green]
 
 [bold]Kernel:[/bold]
 """
-Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) =
-    print(io, string(
-        Panel(string(ifm), 
-             Panel(string(ifm.kernel); 
-             title=string(typeof(ifm.kernel)),
-             style="yellow dim",
-             title_style="default yellow bold",     
-             width=24);
-        title=string(typeof(ifm)),
-        style="blue dim",
-        title_style="default bright_blue bold",
-        padding=(2, 2, 1, 1,),
-        width=60,
+Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) = print(
+    io,
+    string(
+        Panel(
+            string(ifm),
+            Panel(
+                string(ifm.kernel);
+                title = string(typeof(ifm.kernel)),
+                style = "yellow dim",
+                title_style = "default yellow bold",
+                width = 24,
+            );
+            title = string(typeof(ifm)),
+            style = "blue dim",
+            title_style = "default bright_blue bold",
+            padding = (2, 2, 1, 1),
+            width = 60,
         ),
-    )
+    ),
 )
 
 

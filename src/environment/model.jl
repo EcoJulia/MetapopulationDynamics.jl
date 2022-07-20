@@ -3,7 +3,7 @@
 """
     OccupancyEnvironmentModel 
 
-layer:
+layer: 
 
 `niche`: A function that is defined over
 (min(layer), max(layer)) that sum to 1 over
@@ -13,7 +13,6 @@ that an observed occurrence would occur at a location
 with environment value x. 
 """
 struct OccupancyEnvironmentModel{T<:AbstractSpace}
-    space::T
     layer::EnvironmentLayer
     niche::Function
 end
@@ -32,7 +31,6 @@ layer:
         True Growth at location i = niche(x) * Intrinsic Growth 
 """
 struct AbundanceEnvironmentalModel{T<:AbstractSpace}
-    space::T
     layer::EnvironmentLayer
     niche::Function
 end

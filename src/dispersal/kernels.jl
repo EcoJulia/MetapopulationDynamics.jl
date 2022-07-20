@@ -10,19 +10,22 @@ Base.string(kern::DispersalKernel) = """
 [bold]Decay: [/bold][yellow]$(kern.decay)[/yellow]
 [bold]Threshold: [/bold][yellow]$(kern.threshold)[/yellow]
 """
-Base.show(io::IO, ::MIME"text/plain", kern::DispersalKernel) =
-    print(io, string(
-        Panel(string(kern);
-        title=string(typeof(kern)),
-        style="#a686eb  dim",
-        title_style="default #a686eb bold",
-        width=25, padding=(2, 2, 1, 1)
-        )
-    )
+Base.show(io::IO, ::MIME"text/plain", kern::DispersalKernel) = print(
+    io,
+    string(
+        Panel(
+            string(kern);
+            title = string(typeof(kern)),
+            style = "#a686eb  dim",
+            title_style = "default #a686eb bold",
+            width = 25,
+            padding = (2, 2, 1, 1),
+        ),
+    ),
 )
 
 
- function (dk::DispersalKernel)(x)
+function (dk::DispersalKernel)(x)
     f = dk.func(x, dk.decay)
     f > dk.threshold ? f : 0
 end
