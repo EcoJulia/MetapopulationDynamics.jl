@@ -15,3 +15,6 @@ SpatialGraphs = "c8109be6-b162-4503-8829-8b6b29b93f50"
 StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 Term = "22787eb5-b846-44ae-b979-8e399b8463ab"
 UnicodePlots = "b8865327-cd53-5732-bb35-84acbb429228"
+
+[compat]
+SpatialGraphs = "0.1"
