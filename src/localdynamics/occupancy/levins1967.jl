@@ -1,3 +1,10 @@
+"""
+    Levins1967{T<:Real} <: AbstractOccupancyDynamics
+
+A Levins metapopulatoin model. Two parameters: c and e.
+
+Citation:
+"""
 struct Levins1967{T<:Real} <: AbstractOccupancyDynamics
     c::T
     e::T

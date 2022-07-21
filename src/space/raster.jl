@@ -1,10 +1,26 @@
-struct Raster <: AbstractSpace
-    matrix::Matrix
+"""
+    Raster{T} <: AbstractSpace where T
+
+A `Raster` is an `AbstractSpace` consisting of a grid of sites.
+"""
+struct Raster{T} <: AbstractSpace where T
+    matrix::Matrix{T}
 end
 
 Base.size(r::Raster) = size(r.matrix)
+"""
+    numsites(r::Raster) 
+
+Returns the number of nodes in a spatial graph.
+"""
 numsites(r::Raster) = prod(size(r.matrix))
 coordinates(r::Raster) = CartesianIndices(size(r))
+
+"""
+    distancematrix(r::Raster; distance = Euclidean())
+
+Returns a matrix of pairwise distances for all cells in a `Raster` 
+"""
 function distancematrix(r::Raster; distance = Euclidean())
     distmat = zeros(numsites(r), numsites(r))
     ci = coordinates(r)

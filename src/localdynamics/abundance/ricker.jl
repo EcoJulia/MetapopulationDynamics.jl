@@ -4,6 +4,13 @@ abstract type RickerModelType end
 struct DemographicStochasticity end
 struct DemographicHeterogeneity end
 
+"""
+    RickerModel <: AbstractAbundanceDynamics
+
+A `AbstractLocalDyanmics` model based on Ricker (citation). 
+
+Different sources of stochasticity: 
+"""
 @kwdef struct RickerModel <: AbstractAbundanceDynamics
     λ = 1.5
     α = 0.003

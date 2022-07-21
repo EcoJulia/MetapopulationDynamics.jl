@@ -1,5 +1,9 @@
 
+"""
+    StochasticLogistic <: AbstractAbundanceDynamics
 
+The stochastic logistic model, `AbstractLocalDynamics`. 
+"""
 @kwdef struct StochasticLogistic <: AbstractAbundanceDynamics
     λ = 2.5
     K = 100.0

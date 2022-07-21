@@ -1,3 +1,8 @@
+"""
+    EnvironmentTimeseries{T<:Union{EnvironmentLayer,EnvironmentLayerSet}}
+
+A time-series of `EnvironmentLayers` or `EnvironmentLayerSets`.
+"""
 struct EnvironmentTimeseries{T<:Union{EnvironmentLayer,EnvironmentLayerSet}}
     timeseries::Vector{T}
 end

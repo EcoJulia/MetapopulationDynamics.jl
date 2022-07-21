@@ -1,3 +1,12 @@
+"""
+    simulate(
+        modelset::M,
+        space::S;
+        numtimesteps = 100,
+    ) where {M<:ModelSet,S<:AbstractSpace}
+
+Simulation of of `ModelSet`
+"""
 function simulate(
     modelset::M,
     space::S;
@@ -8,7 +17,11 @@ function simulate(
     AbundanceOutput(output)
 end
 
+"""
+    simulate(model::M, space::S; numtimesteps = 100) where {M,S<:AbstractSpace}
 
+Simulation of a single `Model`.
+"""
 function simulate(model::M, space::S; numtimesteps = 100) where {M,S<:AbstractSpace}
     output = zeros(Float32, numsites(space), numtimesteps)
     simulate!(model, space, output)
@@ -21,6 +34,11 @@ _initcondition(::AbstractOccupancyDynamics, space; p = 0.3) =
 
 _sim!(::Missing, space, oldarray, newarray) = oldarray
 
+"""
+    simulate!(modelset::M, space::S, output) where {M<:ModelSet,S<:AbstractSpace}
+
+Simulation of a `ModelSet` with an already pre-allocated `output`.
+"""
 function simulate!(modelset::M, space::S, output) where {M<:ModelSet,S<:AbstractSpace}
     nt = size(output, 2)
     init = _initcondition(modelset.localdynamics, space)
@@ -34,7 +52,16 @@ function simulate!(modelset::M, space::S, output) where {M<:ModelSet,S<:Abstract
     end
 end
 
+"""
+    simulate!(
+        model::M,
+        space::S,
+        output;
+        init = rand(Bernoulli(0.5), numsites(space)),
+    ) where {M<:AbstractOccupancyDynamics,S<:AbstractSpace}
 
+Simulation of a single `AbstractOccupancyDynamics` model.
+""" 
 function simulate!(
     model::M,
     space::S,
@@ -50,6 +77,17 @@ function simulate!(
     OccupancyOutput(output)
 end
 
+
+"""
+    simulate!(
+        model::M,
+        space::S,
+        output;
+        init = rand(Poisson(100), numsites(space)),
+    ) where {M<:AbstractAbundanceDynamics,S<:AbstractSpace}
+
+Simulation of a single `AbstractAbundanceDynamics` model.
+""" 
 function simulate!(
     model::M,
     space::S,

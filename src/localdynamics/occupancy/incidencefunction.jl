@@ -1,3 +1,12 @@
+"""
+    Hanski1994{T<:Real} <: AbstractOccupancyDynamics
+
+An incidence-function model of metapopulation dynamics, as defined 
+in Hanski 1994 (citation).
+
+Parameters: 
+"""
+
 @kwdef struct Hanski1994{T<:Real} <: AbstractOccupancyDynamics
     c::T = 0.1
     e::T = 0.05

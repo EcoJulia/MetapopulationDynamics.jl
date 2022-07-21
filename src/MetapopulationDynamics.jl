@@ -7,6 +7,11 @@ using Term
 using CodeTracking: @code_string
 using UnicodePlots
 
+"""
+    AbstractSpace
+
+Abstract type for spatial domains.
+"""
 abstract type AbstractSpace end
 export AbstractSpace
 include(joinpath("space", "patches.jl"))
@@ -50,7 +55,7 @@ include(joinpath("outputs.jl"))
 export AbstractOutput, AbundanceOutput, OccupancyOutput
 
 include(joinpath("summarizers", "synchrony.jl"))
-export computepcc
+export pcc
 
 include(joinpath("environment", "layer.jl"))
 export EnvironmentLayer

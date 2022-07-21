@@ -1,5 +1,10 @@
-abstract type AbstractDispersalKernel end
+"""
+    DispersalKernel
 
+A `DispersalKernel` defines a function that describes the probability of dispersal,
+with a rate of `decay` and a `threshold`, which defines the value at which any result 
+of `func` is considered to be 0. 
+"""
 @kwdef struct DispersalKernel
     func::Function = (x, decay) -> exp(-x * decay)# a function mapping (x, decay) to a value in [0,1]
     decay = 1.0 # a positive real number 
@@ -29,11 +34,23 @@ function (dk::DispersalKernel)(x)
     f = dk.func(x, dk.decay)
     f > dk.threshold ? f : 0
 end
+
+"""
+    ExponentialDispersalKernel
+
+Constructs a `DispersalKernel` using an `exponential` function
+"""
 ExponentialDispersalKernel(;
     func = (x, decay) -> exp(-x * decay),
     decay = 1.0,
     threshold = 0.01,
 ) = DispersalKernel(; func = func, decay = decay, threshold = threshold)
+
+"""
+    GaussianDispersalKernel
+
+Constructs a `DispersalKernel` using an Gaussian function
+"""
 GaussianDispersalKernel(;
     func = (x, decay) -> exp(-(x * decay)^2),
     decay = 1.0,
@@ -45,6 +62,17 @@ function kernelmatrix(space, kernel)
     broadcast(x -> x == 0 ? 0 : kernel(x), distmat)
 end
 
+
+"""
+    DispersalPotential
+
+A dispersal potential is a matrix that contains the pairwise 
+probability of dispersal between sites in an `AbstractSpace`.
+
+Note this is a doubly-stochastic matrix, meaning all rows 
+and columns sum to 0.  
+
+"""
 struct DispersalPotential
     matrix::Any
 end

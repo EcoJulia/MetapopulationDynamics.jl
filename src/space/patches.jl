@@ -11,6 +11,10 @@
 
 """
 
+"""
+    Patches <: AbstractSpace
+
+TBD
+"""
 struct Patches <: AbstractSpace end
 
-numsites() = nothing

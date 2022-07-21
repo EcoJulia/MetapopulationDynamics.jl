@@ -1,10 +1,54 @@
+"""
+    abstract type Model end
+
+Abstract supertype for all models.
+"""
 abstract type Model end
+
+"""
+    abstract type AbstractLocalDynamics <: Model end
+
+Abstract supertype for all models of local dynamics.
+"""
 abstract type AbstractLocalDynamics <: Model end
+
+"""
+    abstract type AbstractOccupancyDynamics <: AbstractLocalDynamics end
+
+
+"""
 abstract type AbstractOccupancyDynamics <: AbstractLocalDynamics end
+
+"""
+    abstract type AbstractAbundanceDynamics <: AbstractLocalDynamics end
+
+"""
 abstract type AbstractAbundanceDynamics <: AbstractLocalDynamics end
+
+"""
+    abstract type AbstractDispersalModel <: Model end
+
+Abstract supertype for all dispersal models.
+"""
 abstract type AbstractDispersalModel <: Model end
+
+"""
+    abstract type AbstractEnvironmentModel <: Model end
+
+Abstract supertype for all environmental models
+"""
 abstract type AbstractEnvironmentModel <: Model end
 
+
+"""
+    ModelSet{
+        L<:Union{AbstractLocalDynamics,Missing},
+        D<:Union{AbstractDispersalModel,Missing},
+        E<:Union{AbstractEnvironmentModel,Missing},
+    }
+
+A set of local, environmental, and dispersal models.
+"""
 @kwdef struct ModelSet{
     L<:Union{AbstractLocalDynamics,Missing},
     D<:Union{AbstractDispersalModel,Missing},
@@ -15,6 +59,11 @@ abstract type AbstractEnvironmentModel <: Model end
     environment::E
 end
 
+"""
+    modelset()
+
+Builds a ModelSet.
+"""
 modelset(
     l::L,
     d::D,

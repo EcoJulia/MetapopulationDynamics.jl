@@ -1,5 +1,6 @@
-
-
+"""
+    StochasticJumpDispersalModel{T} <: AbstractDispersalModel
+"""
 @kwdef struct StochasticJumpDispersalModel{T} <: AbstractDispersalModel
     prob::T = 0.1 # probability an individual disperses in it's lifetime before reproducing
     potential::DispersalPotential =
@@ -31,7 +32,9 @@ function _sim!(
     newstate
 end
 
-
+"""
+    DeterministicJumpDispersalModel{T} <: AbstractDispersalModel
+"""
 @kwdef struct DeterministicJumpDispersalModel{T} <: AbstractDispersalModel
     prob::T = 0.1 # probability an individual disperses in it's lifetime before reproducing
     potential::DispersalPotential =

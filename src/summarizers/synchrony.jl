@@ -1,4 +1,10 @@
-function computepcc(timeseries)
+"""
+    pcc(timeseries)
+
+Computes the mean Pairwise-Crosscorrelation for a timeseries
+that is an `AbundanceOutput`.
+"""
+function pcc(timeseries)
     n_pops = length(timeseries[:, 1])
     mean_cc::Float64 = 0.0
     s::Float64 = 0.0

@@ -1,7 +1,23 @@
+"""
+    SpatialGraph{T} <: AbstractSpace
+
+An `SpatialGraph is an `AbstractSpace` that consists of a set of discrete 
+coordinates.
+"""
+
 @kwdef struct SpatialGraph{T} <: AbstractSpace where {T}
     coordinates::Vector{Tuple{T,T}} = [(rand(), rand()) for _ = 1:20]
 end
 SpatialGraph(n::Integer) = SpatialGraph([(rand(), rand()) for _ = 1:n])
+
+"""
+    numsites(sg::SpatialGraph) 
+
+Returns the number of nodes in a spatial graph.
+"""
+numsites(sg::SpatialGraph) = length(coordinates(sg))
+coordinates(sg::SpatialGraph) = sg.coordinates
+
 
 function _spatialgraph_to_text(sg)
     str = string(
@@ -39,8 +55,11 @@ Base.show(io::IO, ::MIME"text/plain", sg::SpatialGraph) = print(
 
 
 
-coordinates(sg::SpatialGraph) = sg.coordinates
-numsites(sg::SpatialGraph) = length(coordinates(sg))
+"""
+    distancematrix(sg::SpatialGraph; distance = Euclidean())
+    
+Returns a matrix of pairwise distances for all nodes in a `SpatialGraph` 
+"""
 function distancematrix(sg::SpatialGraph; distance = Euclidean())
     distmat = zeros(numsites(sg), numsites(sg))
 

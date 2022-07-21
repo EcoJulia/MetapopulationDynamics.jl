@@ -41,7 +41,6 @@ end
     OccupancyOutput
 
 """
-
 struct OccupancyOutput 
     timeseries
 end 
