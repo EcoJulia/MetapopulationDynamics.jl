@@ -1,9 +1,9 @@
 """
-    EnvironmentLayer{S,T} where {S<:AbstractSpace}
+    EnvironmentLayer{S,T}
 
 An environmental layer built on an `AbstractSpace`. 
 """
-struct EnvironmentLayer{S,T} where {S<:AbstractSpace}
+struct EnvironmentLayer{S<:AbstractSpace,T} 
     space::S
     values::T
 end
