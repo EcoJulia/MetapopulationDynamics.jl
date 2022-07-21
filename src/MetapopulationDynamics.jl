@@ -60,7 +60,7 @@ export pcc
 include(joinpath("environment", "layer.jl"))
 export EnvironmentLayer
 include(joinpath("environment", "model.jl"))
-export OccupancyEnvironmentModel, AbundanceEnvironmentModel
+export AbstractEnvironmentModel, OccupancyEnvironmentModel, AbundanceEnvironmentModel
 include(joinpath("environment", "layerset.jl"))
 export EnvironmentLayerSet, numlayers
 

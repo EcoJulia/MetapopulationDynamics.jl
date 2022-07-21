@@ -36,6 +36,8 @@ AbundanceOutput
 OccupancyOutput
 pcc
 EnvironmentLayer
+EnvironmentLayerSet
+AbstractEnvironmentModel
 OccupancyEnvironmentModel
 AbundanceEnvironmentModel
 numlayers

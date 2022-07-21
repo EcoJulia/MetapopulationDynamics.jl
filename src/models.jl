@@ -33,7 +33,7 @@ Abstract supertype for all dispersal models.
 abstract type AbstractDispersalModel <: Model end
 
 """
-    abstract type AbstractEnvironmentModel <: Model end
+    AbstractEnvironmentModel <: Model 
 
 Abstract supertype for all environmental models
 """
