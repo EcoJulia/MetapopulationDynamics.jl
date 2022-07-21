@@ -4,7 +4,6 @@
 An `SpatialGraph is an `AbstractSpace` that consists of a set of discrete 
 coordinates.
 """
-
 @kwdef struct SpatialGraph{T} <: AbstractSpace where {T}
     coordinates::Vector{Tuple{T,T}} = [(rand(), rand()) for _ = 1:20]
 end

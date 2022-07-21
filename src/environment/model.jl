@@ -19,7 +19,7 @@ end
 
 
 """
-    AbundanceEnvironmentalModel 
+    AbundanceEnvironmentModel 
 
 layer:
 
@@ -30,7 +30,7 @@ layer:
         
         True Growth at location i = niche(x) * Intrinsic Growth 
 """
-struct AbundanceEnvironmentalModel{T<:AbstractSpace}
+struct AbundanceEnvironmentModel{T<:AbstractSpace}
     layer::EnvironmentLayer
     niche::Function
 end

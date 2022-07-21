@@ -32,10 +32,9 @@ RickerModel
 StochasticLogistic
 simulate
 simulate!
-AbstractOutput
 AbundanceOutput
 OccupancyOutput
-computepcc
+pcc
 EnvironmentLayer
 OccupancyEnvironmentModel
 AbundanceEnvironmentModel
