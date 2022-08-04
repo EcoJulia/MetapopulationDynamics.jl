@@ -1,6 +1,10 @@
 
 ![](./docs/src/assets/mpd_header.png)
 
+[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/stable)
+[![](https://img.shields.io/badge/docs-dev-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/dev)
+[![CI](https://github.com/cesaraustralia/MetapopulationDynamics.jl/actions/workflows/ci.yml/badge.svg)](https://github.com/EcoJulia/MetapopulationDynamics.jl/actions/workflows/ci.yml)
+
 MetapopulationDynamics is a package for generalizable simulation of
 population dynamics across space, including models of occurrence,
 occupancy, and abundance, dispersal, response to environmental
