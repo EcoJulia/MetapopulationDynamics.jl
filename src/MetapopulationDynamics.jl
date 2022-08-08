@@ -6,6 +6,15 @@ using StatsBase
 using Term
 using CodeTracking: @code_string
 using UnicodePlots
+using DynamicGrids
+
+
+include(joinpath("models.jl"))
+export MetapopulationModel,
+    AbstractLocalDynamics,
+    AbstractOccupancyDynamics,
+    AbstractAbundanceDynamics,
+    AbstractDispersalModel
 
 """
     AbstractSpace
@@ -18,13 +27,6 @@ include(joinpath("space", "patches.jl"))
 include(joinpath("space", "raster.jl"))
 include(joinpath("space", "spatialgraph.jl"))
 export Raster, SpatialGraph, Patches, numsites, distancematrix
-
-include(joinpath("models.jl"))
-export Model,
-    AbstractLocalDynamics,
-    AbstractOccupancyDynamics,
-    AbstractAbundanceDynamics,
-    AbstractDispersalModel
 
 include(joinpath("modelset.jl"))
 export modelset, ModelSet
@@ -72,7 +74,6 @@ export EnvironmentTimeseries
 
 using Requires
 function __init__()
-    @info "Loading NeutralLandscapes.jl support..."
     @require NeutralLandscapes="71847384-8354-4223-ac08-659a5128069f" include(joinpath("integrations", "neutrallandscapes.jl"))
 end
 

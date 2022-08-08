@@ -12,13 +12,13 @@ end
 
 
 Base.string(lv::Levins1967) = """
-[bold]$(typeof(lv)) <: $(supertype(typeof(lv)))[/bold]
-[bold]  <: $(supertype(supertype(typeof(lv)))) <: $(supertype(supertype(supertype(typeof(lv)))))[/bold]
+{bold}$(typeof(lv)) <: $(supertype(typeof(lv))){/bold}
+{bold}  <: $(supertype(supertype(typeof(lv)))) <: $(supertype(supertype(supertype(typeof(lv))))){/bold}
 
-An [bold]Levin's metapopulation[/bold] model with parameters:
+An {bold}Levin's metapopulation{/bold} model with parameters:
 
-[bold]c: [/bold][yellow]$(lv.c)[/yellow]
-[bold]e: [/bold][yellow]$(lv.e)[/yellow]
+{bold}c: {/bold}{yellow}$(lv.c){/yellow}
+{bold}e: {/bold}{yellow}$(lv.e){/yellow}
 """
 Base.show(io::IO, ::MIME"text/plain", lv::Levins1967) = print(
     io,

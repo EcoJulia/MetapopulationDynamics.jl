@@ -35,9 +35,9 @@ end
 
 
 Base.string(r::Raster) = """
-[bold]$(typeof(r)) <: $(supertype(typeof(r)))[/bold]
+{bold}$(typeof(r)) <: $(supertype(typeof(r))){/bold}
 
-An [bold]spatial graph[/bold] with [bold][yellow]$(numsites(r)))[/yellow][/bold] locations.
+An {bold}spatial graph{/bold} with {bold}{yellow}$(numsites(r))){/yellow}{/bold} locations.
 
 """
 
@@ -56,3 +56,17 @@ Base.show(io::IO, ::MIME"text/plain", r::Raster) = print(
     ),
 )
 
+"""
+    ruleify(model::M)
+
+Creates a DynamicGrids rule from `model`. Dispatches
+to `_rulify` implementations for specific models
+"""
+function ruleify(model::M) where {M<:MetapopulationModel}
+    try 
+        _ruleify(model)
+    catch err
+        @info err
+        @info "The implementation of _rulify isn't done, potentially on purpose."
+    end
+end 

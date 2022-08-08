@@ -11,9 +11,9 @@ of `func` is considered to be 0.
     threshold = 0.01 # cutoff threshold for a value of func to be considered 0
 end
 Base.string(kern::DispersalKernel) = """
-[bold]Kernel: [/bold][green]$(kern.func)[/green]
-[bold]Decay: [/bold][yellow]$(kern.decay)[/yellow]
-[bold]Threshold: [/bold][yellow]$(kern.threshold)[/yellow]
+{bold}Kernel: {/bold}{green}$(kern.func){/green}
+{bold}Decay: {/bold}{yellow}$(kern.decay){/yellow}
+{bold}Threshold: {/bold}{yellow}$(kern.threshold){/yellow}
 """
 Base.show(io::IO, ::MIME"text/plain", kern::DispersalKernel) = print(
     io,

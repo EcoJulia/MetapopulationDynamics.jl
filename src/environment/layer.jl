@@ -20,7 +20,7 @@ EnvironmentLayer(raster::Raster) = EnvironmentLayer(raster, raster.matrix)
 EnvironmentLayer(mat::Matrix) = EnvironmentLayer(Raster(similar(mat)), mat)
 
 Base.string(el::EnvironmentLayer{ST,ET}) where {ST,ET} = """
-An [bold]environmental layer[/bold] with [bold][yellow]$(length(el.values))[/yellow][/bold] locations
+An {bold}environmental layer{/bold} with {bold}{yellow}$(length(el.values)){/yellow}{/bold} locations
 based on a $(ST).
 """
 

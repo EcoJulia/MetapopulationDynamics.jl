@@ -81,19 +81,19 @@ end
 """
     simulate!(
         model::M,
-        space::S,
+        space::SpatialGraph,
         output;
         init = rand(Poisson(100), numsites(space)),
-    ) where {M<:AbstractAbundanceDynamics,S<:AbstractSpace}
+    ) where {M<:AbstractAbundanceDynamics,S}
 
 Simulation of a single `AbstractAbundanceDynamics` model.
 """ 
 function simulate!(
     model::M,
-    space::S,
+    space::SpatialGraph,
     output;
     init = rand(Poisson(100), numsites(space)),
-) where {M<:AbstractAbundanceDynamics,S<:AbstractSpace}
+) where {M<:AbstractAbundanceDynamics}
     nt = size(output, 2)
     output[:, begin] .= init
     for t = 2:nt
@@ -104,4 +104,25 @@ function simulate!(
     # params = (...)
     # AbundanceOutput(output, model, space)
     AbundanceOutput(output)
+end
+
+# Wastes an allocation, fix later by avoiding simulate! call
+function simulate!(
+    model::M,
+    space::Raster,
+    output;
+    init = rand(Exponential(100), numsites(space)),
+) where {M<:AbstractAbundanceDynamics}
+    nt = size(output, 2)
+
+    # pass model M to ruleify()
+    # setup output 
+    # cal DG.sim!
+    rule = ruleify(model)
+
+    out = ArrayOutput(Float32.(init),tspan=1:nt)
+    simout = sim!(out, rule)  
+
+    abdout = hcat([vec(simout.frames[t]) for t in 1:nt]...)
+    AbundanceOutput(abdout)
 end

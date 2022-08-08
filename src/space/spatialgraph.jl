@@ -31,9 +31,9 @@ function _spatialgraph_to_text(sg)
 end
 
 Base.string(sg::SpatialGraph) = """
-[bold]$(typeof(sg)) <: $(supertype(typeof(sg)))[/bold]
+{bold}$(typeof(sg)) <: $(supertype(typeof(sg))){/bold}
 
-An [bold]spatial graph[/bold] with [bold][yellow]$(length(sg.coordinates))[/yellow][/bold] locations.
+An {bold}spatial graph{/bold} with {bold}{yellow}$(length(sg.coordinates)){/yellow}{/bold} locations.
 
 """
 

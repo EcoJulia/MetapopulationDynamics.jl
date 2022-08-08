@@ -1,16 +1,16 @@
 """
-    abstract type Model end
+    abstract type MetapopulationModel end
 
 Abstract supertype for all models.
 """
-abstract type Model end
+abstract type MetapopulationModel end
 
 """
-    abstract type AbstractLocalDynamics <: Model end
+    abstract type AbstractLocalDynamics <: MetapopulationModel end
 
 Abstract supertype for all models of local dynamics.
 """
-abstract type AbstractLocalDynamics <: Model end
+abstract type AbstractLocalDynamics <: MetapopulationModel end
 
 """
     abstract type AbstractOccupancyDynamics <: AbstractLocalDynamics end
@@ -26,18 +26,18 @@ abstract type AbstractOccupancyDynamics <: AbstractLocalDynamics end
 abstract type AbstractAbundanceDynamics <: AbstractLocalDynamics end
 
 """
-    abstract type AbstractDispersalModel <: Model end
+    abstract type AbstractDispersalModel <: MetapopulationModel end
 
 Abstract supertype for all dispersal models.
 """
-abstract type AbstractDispersalModel <: Model end
+abstract type AbstractDispersalModel <: MetapopulationModel end
 
 """
-    AbstractEnvironmentModel <: Model 
+    AbstractEnvironmentModel <: MetapopulationModel 
 
 Abstract supertype for all environmental models
 """
-abstract type AbstractEnvironmentModel <: Model end
+abstract type AbstractEnvironmentModel <: MetapopulationModel end
 
 
 """

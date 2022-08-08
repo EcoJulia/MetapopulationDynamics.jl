@@ -1,5 +1,7 @@
 # WARNING this file is only loaded if NeutralLandscapes.jl is also active
 # This all happens thanks to the Requires.jl package
+@info "Loading NeutralLandscapes.jl support for MetapopulationDynamics.jl..."
+
 
 using NeutralLandscapes
 

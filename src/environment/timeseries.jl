@@ -13,9 +13,9 @@ Base.getindex(lt::EnvironmentTimeseries, i) = lt.timeseries[i]
 Base.iterate(et, i=1) = i <= length(et) ? (et[i],i+1) : nothing
 
 Base.string(et::EnvironmentTimeseries) = """
-[bold]$(typeof(et))[/bold]
+{bold}$(typeof(et)){/bold}
 
-An [bold]timeseries[/bold] of environmental layers with [bold][yellow]$(length(et.timeseries))[/yellow][/bold] timesteps.
+An {bold}timeseries{/bold} of environmental layers with {bold}{yellow}$(length(et.timeseries)){/yellow}{/bold} timesteps.
 """
 
 

@@ -18,19 +18,19 @@ Parameters:
 end
 
 Base.string(ifm::Hanski1994) = """
-[bold]$(typeof(ifm)) <: $(supertype(typeof(ifm)))[/bold]
-[bold]  $(supertype(supertype(typeof(ifm)))) <: $(supertype(supertype(supertype(typeof(ifm)))))[/bold]
+{bold}$(typeof(ifm)) <: $(supertype(typeof(ifm))){/bold}
+{bold}  $(supertype(supertype(typeof(ifm)))) <: $(supertype(supertype(supertype(typeof(ifm))))){/bold}
 
-An [bold]incidence function[/bold] model with parameters:
+An {bold}incidence function{/bold} model with parameters:
 
-[bold]c: [/bold][yellow]$(ifm.c)[/yellow]
-[bold]e: [/bold][yellow]$(ifm.e)[/yellow]
-[bold]α: [/bold][yellow]$(ifm.α)[/yellow]
-[bold]x (area-extinction dependence):[/bold] [yellow]$(ifm.x)[/yellow]
-[bold]A (areas vector):[/bold] Vector of [yellow]::$(typeof(ifm.A[begin]))[/yellow] of length [red]$(length(ifm.A))[/red] 
-    with [bold]mean[/bold] [green]$(round(mean(ifm.A),digits=3))[/green] and [bold]variance[/bold] [green]$(round(var(ifm.A), digits=3))[/green]
+{bold}c: {/bold}{yellow}$(ifm.c){/yellow}
+{bold}e: {/bold}{yellow}$(ifm.e){/yellow}
+{bold}α: {/bold}{yellow}$(ifm.α){/yellow}
+{bold}x (area-extinction dependence):{/bold} {yellow}$(ifm.x){/yellow}
+{bold}A (areas vector):{/bold} Vector of {yellow}::$(typeof(ifm.A[begin])){/yellow} of length {red}$(length(ifm.A)){/red} 
+    with {bold}mean{/bold} {green}$(round(mean(ifm.A),digits=3)){/green} and {bold}variance{/bold} {green}$(round(var(ifm.A), digits=3)){/green}
 
-[bold]Kernel:[/bold]
+{bold}Kernel:{/bold}
 """
 Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) = print(
     io,
