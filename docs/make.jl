@@ -1,22 +1,37 @@
-using Documenter, MetapopulationDynamics
+using Documenter, BiodiversityObservationNetworks
+import Literate
 
 # For GR docs bug
 ENV["GKSwstype"] = "100"
 
-makedocs(
-    sitename="MetapopulationDynamics.jl",
-    authors="Michael Catchen",
-    modules=[MetapopulationDynamics],
-    pages=[
+vignettes = filter(
+    endswith(".jl"),
+    readdir(joinpath(@__DIR__, "src", "vignettes"); join = true, sort = true),
+)
+for vignette in vignettes
+    Literate.markdown(
+        vignette,
+        joinpath(@__DIR__, "src", "vignettes");
+        config = Dict("credit" => false, "execute" => true),
+    )
+end
+
+makedocs(;
+    sitename = "MetapopulationDynamics",
+    authors = "Michael D. Catchen",
+    modules = [BiodiversityObservationNetworks],
+    pages = [
         "Index" => "index.md",
+        "Vignettes" => [
+            "Overview" => "./overview.md",
         ],
-    checkdocs=:all,
-    strict=true,
+    ],
+    checkdocs = :all,
 )
 
-deploydocs(
-    deps=Deps.pip("pygments", "python-markdown-math"),
-    repo="github.com/EcoJulia/MetapopulationDyanmics.jl.git",
-    devbranch="main",
-    push_preview=true
+deploydocs(;
+    deps = Deps.pip("pygments", "python-markdown-math"),
+    repo = "github.com/EcoJulia/MetapopulationDynamics.jl.git",
+    devbranch = "main",
+    push_preview = true,
 )

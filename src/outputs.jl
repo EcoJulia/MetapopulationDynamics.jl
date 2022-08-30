@@ -10,7 +10,6 @@ struct AbundanceOutput
 end 
 
 
-
 Base.string(output::AbundanceOutput) = """
 [bold]$(typeof(output)) <: $(supertype(typeof(output)))[/bold]
 

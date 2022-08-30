@@ -59,6 +59,14 @@ A set of local, environmental, and dispersal models.
     environment::E
 end
 
+
+# TODO 
+# Alias handle <: AbstractModel 
+# 
+
+
+
+
 """
     modelset()
 

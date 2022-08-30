@@ -37,6 +37,14 @@ Base.show(io::IO, ::MIME"text/plain", lv::Levins1967) = print(
 
 params(model::M) where {M<:Levins1967} = model.c, model.e
 
+
+"""
+    _sim!
+
+This dispatch should occur on a file that is for after simulate! abundance/occ
+
+
+"""
 function _sim!(
     model::M,
     space::S,

@@ -17,6 +17,7 @@ function simulate(
     AbundanceOutput(output)
 end
 
+
 """
     simulate(model::M, space::S; numtimesteps = 100) where {M,S<:AbstractSpace}
 
@@ -32,6 +33,10 @@ _initcondition(::AbstractAbundanceDynamics, space; λ = 100) =
 _initcondition(::AbstractOccupancyDynamics, space; p = 0.3) =
     rand(Bernoulli(p), numsites(space))
 
+"""
+    ! TODO: this function shouldn't dispatch at all on missing env,
+    this should be @info'd 
+"""
 _sim!(::Missing, space, oldarray, newarray) = oldarray
 
 """
@@ -107,6 +112,12 @@ function simulate!(
 end
 
 # Wastes an allocation, fix later by avoiding simulate! call
+
+"""
+    # TODO This should be moved into a different file for dispatch 
+    specifically on rasters.
+
+"""
 function simulate!(
     model::M,
     space::Raster,

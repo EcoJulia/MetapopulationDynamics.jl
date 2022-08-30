@@ -32,6 +32,7 @@ An {bold}incidence function{/bold} model with parameters:
 
 {bold}Kernel:{/bold}
 """
+
 Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) = print(
     io,
     string(
@@ -55,8 +56,6 @@ Base.show(io::IO, ::MIME"text/plain", ifm::Hanski1994) = print(
 
 
 
-params(model::M) where {M<:Hanski1994} =
-    model.c, model.e, model.α, model.x, model.A, model.kernel
 
 function _hanski1994_extinction(extprob, A_i, x)
     A_i < extprob^(1 / x) ? 1 : extprob / (A_i^x)
