@@ -1,4 +1,4 @@
-using Documenter, BiodiversityObservationNetworks
+using Documenter, MetapopulationDynamics
 import Literate
 
 # For GR docs bug
