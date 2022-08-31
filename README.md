@@ -1,7 +1,6 @@
 
 ![](./docs/src/assets/mpd_header.png)
 
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/stable)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/dev)
 
 MetapopulationDynamics is a package for generalizable simulation of
