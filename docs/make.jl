@@ -22,9 +22,23 @@ makedocs(;
     modules = [MetapopulationDynamics],
     pages = [
         "Index" => "index.md",
+        "Overview" => "overview.md",
         "Vignettes" => [
-            "Overview" => "./overview.md",
+            "Incidence-Function (Hanski 1994) model" => "./incidence_function.md",
         ],
+        "Documentation" => [
+            "Space" => [
+                "Rasters" => "./documentation/space/raster.md", 
+                "Spatial graphs" => "./documentation/spaces/spatialgraph.md"
+            ],
+            "Models" => [
+                "Occupancy" => "./documentations/models/occupancy.md",
+                "Abundance" => "./documentation/models/abundance.md"
+            ],
+            "Simulation" => [
+                "Simulation" => "./documentations/simulation/simulation.md"
+            ]
+        ]
     ],
     checkdocs = :all,
 )
