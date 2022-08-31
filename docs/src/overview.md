@@ -1,4 +1,4 @@
-# NeutralLandscapes.jl
+# Overview
 
 Population dynamics across space, in Julia. 
 
