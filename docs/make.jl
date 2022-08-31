@@ -35,6 +35,3 @@ deploydocs(;
     devbranch = "main",
     push_preview = true,
 )
-
-
-Uᵢ = ∑ⱼ Cov(i,j)
