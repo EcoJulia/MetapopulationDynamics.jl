@@ -15,7 +15,7 @@ users to define custom models.
 
 Finally, MetapopulationDynamics is integrated with many other EcoJulia
 tools, which together form a toolbox for high-performance simulation
-of ecological dynamics. [Here's the link to the documentation](TODO).
+of ecological dynamics. [Here's the link to the documentation](https://ecojulia.github.io/MetapopulationDynamics.jl/dev).
 
 # Features
 
