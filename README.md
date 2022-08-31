@@ -1,7 +1,6 @@
 
 ![](./docs/src/assets/mpd_header.png)
 
-[![](https://img.shields.io/badge/docs-stable-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/stable)
 [![](https://img.shields.io/badge/docs-dev-blue.svg)](https://ecojulia.github.io/MetapopulationDynamics.jl/dev)
 
 MetapopulationDynamics is a package for generalizable simulation of
@@ -16,7 +15,7 @@ users to define custom models.
 
 Finally, MetapopulationDynamics is integrated with many other EcoJulia
 tools, which together form a toolbox for high-performance simulation
-of ecological dynamics. [Here's the link to the documentation](TODO).
+of ecological dynamics. [Here's the link to the documentation](https://ecojulia.github.io/MetapopulationDynamics.jl/dev).
 
 # Features
 
