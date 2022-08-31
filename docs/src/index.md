@@ -1,4 +1,4 @@
-![](./src/assets/mpd_header.png)
+![todocaption](https://raw.githubusercontent.com/EcoJulia/MetapopulationDynamics.jl/main/docs/src/assets/mpd_header.png)
 
 
 MetapopulationDynamics is a package for generalizable simulation of population
