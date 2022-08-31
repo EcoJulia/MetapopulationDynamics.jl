@@ -19,7 +19,7 @@ end
 makedocs(;
     sitename = "MetapopulationDynamics",
     authors = "Michael D. Catchen",
-    modules = [BiodiversityObservationNetworks],
+    modules = [MetapopulationDynamics],
     pages = [
         "Index" => "index.md",
         "Vignettes" => [
